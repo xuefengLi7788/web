@@ -1,0 +1,95 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto Mono", monospace;
+  background: rgba(0, 0, 0, 0); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.passport {
+  position: relative;
+  width: 698.25px;
+  height: 1024.25px;
+  background: url("bg.png") no-repeat center/cover;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  overflow: hidden;
+}
+/* ** */
+.symbols {
+  position: absolute;
+  top: 450px;      
+  left: 60px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #797979;
+  letter-spacing: 2px;
+}
+
+/* VISUALDESIGNER<<XUEFENG<<< */
+.visual-id {
+  position: absolute;
+  top: 470px;     
+  left: 60px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #797979;
+  letter-spacing: 2px;
+}
+/* basic info */
+.info {
+  position: absolute;
+  top: 200px;   /* 往下放 */
+  left: 430px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #666666;
+  width: 250px; /* 保证和右侧插画区隔开 */
+}
+.info p {
+  margin: 8px 0;        
+}
+
+.info strong {
+  font-weight: 400;
+}
+
+.info ul {
+  margin: 8px 0 8px;
+  padding: 0;
+  list-style: none;
+}
+.info li {
+  margin: 8px 0;
+}
+
+/* contact */
+.contact {
+  position: absolute;
+  top: 650px;
+  left: 60px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #111;
+}
+
+/* illustration */
+.profile-pic {
+  position: absolute;
+  top: 210px;
+  left: 60px;
+  height: 200px;
+  width: auto;
+}
+
+.footer {
+  position: absolute;
+  bottom: 400px;
+  left: 60px;
+  font-size: 13px;
+  color: #333;
+}
+
