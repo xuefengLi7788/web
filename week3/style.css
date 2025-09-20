@@ -168,7 +168,7 @@ body {
   background-color: #ffffff; 
 }
 
-/* 左边信息栏 */
+/* info on the left */
 .uiux-page .sidebar {
   width: 220px;
   color: #000;
@@ -178,7 +178,7 @@ body {
   padding:0;
 
 }
-/* 布局容器 */
+/* whole container */
 .uiux-page .container {
   display: flex;
   justify-content: flex-start;
@@ -191,7 +191,7 @@ body {
   font-size: 18px;
   margin: 0;
   padding:0;
-  
+
 }
 .uiux-page .sidebar hr {
   border: none;
@@ -207,7 +207,7 @@ body {
   margin: 8px 0;
 }
 
-/* 右边项目图 */
+/* right project */
 .uiux-page .projects {
   flex: 1;
   display: flex;
@@ -217,10 +217,10 @@ body {
 
 }
 .uiux-page .projects img {
-  max-width: 600px;  /* ✅ 每张图片不会超过 300px 宽 */
-  width: 100%;       /* 自适应缩放 */
+  max-width: 600px;  /* each image */
+  width: 100%;      
   display:block;
-  height: auto;      /* 保持比例 */
+  height: auto;     
   border-radius: 8px;
 
 }
