@@ -1,15 +1,4 @@
-/* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-.icon {
-  width: 18px;   /* adjust size as needed */
-  height: 18px;
-  vertical-align: middle;
 
-}
 
 /* Navbar */
 .navbar {
@@ -18,15 +7,46 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 40px;
+  padding: 0.5rem 2rem;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}url(http://127.0.0.1:3000/IYA%20website/icon/homepage.png)
+.nav2icon {
+  display: flex;
+  align-items: center; 
+}
+.icon {
+  width: 18px; 
+  height: 18px;
+  vertical-align: middle;
+  margin-top: 6px;
+}
+.iya {
+  width: auto;  
+  height: 30px;
+  vertical-align: middle;
+}
+/* remove bullets + reset */
+nav2icon ul {
+  display: flex;
+  gap: 1rem;             /* spacing between icons */
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.navbar .logo {
-  font-size: 18px;
-  line-height: 1.3;
+/* images inside */
+nav2icon img {
+  height: 20px;          /* adjust to match text size */
+  width: auto;
+  display: block;
+}
+.navbar .logo img{
   height:40px;
-  
+  display: block;
+}
+.navbar .iya img{
+  height:80px;
+  display: block;
 }
 
 .nav-links {
@@ -38,22 +58,25 @@
 .nav-links li a {
   text-decoration: none;
   color: #fff;
-  font-weight: bold;
   font-size: 14px;
+  opacity: 1;
+  transition: color 0.3s, opacity 0.3s;
+
+}
+.navbar .nav-links:hover li a {
+  opacity: 0.3;
 }
 
-/* Breadcrumb */
-.breadcrumb {
-  font-family: Arial, sans-serif;
-  padding: 12px 40px;
-  font-size: 14px;
-  background: #fff;
-  color: #444;
+.navbar .nav-links li a:hover {
+  opacity: 1;   
+  color: #fff;  
 }
-
-.breadcrumb strong {
-  color: #000;
+/* .nav-links li a:hover {
+    opacity: 1;
 }
+.nav-links li a:not(:hover){
+    opacity: 0.5;
+} */
 
 /* Hero section */
 .hero {
@@ -69,32 +92,8 @@
   display: block;
 }
 
-.overlay-text {
-  position: absolute;
-  bottom: 20px;
-  left: 40px;
-  color: white;
-  text-shadow: 0 3px 10px rgba(0,0,0,0.6);
-}
-
-.overlay-text h1 {
-  font-size: 36px;
-  margin-bottom: 8px;
-}
-
-.overlay-text p {
-  font-size: 18px;
-}
 
 /* Content section */
 .content {
   padding: 40px;
-}
-
-.event img {
-  width: 100%;
-  max-width: 800px;
-  border-radius: 8px;
-  display: block;
-  margin: 0 auto;
 }
