@@ -40,18 +40,18 @@
       <div class="info">
         <p>
           <span class = "label" data-i18n="surname">Surname/Family name:</span>
-          <strong class = "value">XUEFENG</strong>
+          <strong class = "value" data-i18n="LI">LI</strong>
         </p>
         <p>
           <span class="label" data-i18n="given">Given name: </span>
-          <strong class = "value">LI</strong>
+          <strong class = "value" data-i18n="XUEFENG">XUEFENG</strong>
         </p>
         <p>
           <span class="label" data-i18n="issuing">Issuing Post Name:</span>
             <strong class="value"> 
               <select class="dropdown">
-                <option value="la" selected>LOS ANGELES</option>
-                <option value="bj">BEIJING</option>
+                <option value="la" selected data-i18n="LA" >LOS ANGELES</option>
+                <option value="bj" data-i18n="BJ">BEIJING</option>
               </select>
             </strong>
         </p>
@@ -65,12 +65,12 @@
         </p>
 
         <p>
-          <span class = "label">Focus:</span>
+          <span class = "label" data-i18n="focus">Focus:</span>
         </p>
         <ul>
-            <li>GRAPHIC DESIGN</li>
-            <li>MOTION DESIGN</li>
-            <li>UI/UX DESIGN</li>
+            <li data-i18n="focus_graphic">GRAPHIC DESIGN</li>
+            <li data-i18n="focus_motion">MOTION DESIGN</li>
+            <li data-i18n="focus_uiux">UI/UX DESIGN</li>
 
         </ul>
       </div>
@@ -87,28 +87,28 @@
     <div class="newprojects-list">
       <div class="newproject">
         <span class="name"><u>WalkinLa</u></span>
-        <span class="tag">{uiux}</span>
+        <span class="tag" data-i18n="tag_uiux">{uiux}</span>
         <span class="tools">Figma, Unity, C4D, Ae</span>
         <span class="year">2024</span>
       </div>
 
       <div class="newproject">
         <span class="name"><u>FutureofFlowers</u></span>
-        <span class="tag">{uiux}</span>
+        <span class="tag" data-i18n="tag_uiux">{uiux}</span>
         <span class="tools">Figma, Illustrator</span>
         <span class="year">2024</span>
       </div>
 
       <div class="newproject">
         <span class="name"><u>IntimateSpace</u></span>
-        <span class="tag">{XR}</span>
+        <span class="tag" data-i18n="tag_XR">{XR}</span>
         <span class="tools">Figma, C4D, Ae</span>
         <span class="year">2024</span>
       </div>
 
       <div class="newproject">
         <span class="name"><u>TheLastDecision</u></span>
-        <span class="tag">{Service}</span>
+        <span class="tag" data-i18n="tag_service">{Service}</span>
         <span class="tools">TouchDesigner + Arduino</span>
         <span class="year">2023</span>
       
@@ -118,9 +118,9 @@
 
     </div>
       <div class="custom-message">
-      <form action="mailto:xuefli33@gmail.com" method="post" enctype="text/plain">
-      <label for="message">Customs Feedback:</label>
-      <input type="text" id="message" name="message" placeholder="Let me know your favorite project..." required>
+      <form id="contact-form">
+      <label for="message" data-i18n="feedback_label" >Customs Feedback:</label>
+      <input type="text" id="message" name="message" data-i18n="feedback_placeholder" placeholder="Let me know your favorite project..." required>
       <button type="submit" class="send-btn">→</button>
       </form>
     </div>
@@ -131,8 +131,14 @@
     <footer class="site-footer">
     <p>Copyright © Xuefeng Li</p>
     </footer>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  (function() {
+    emailjs.init("l0lsVh4tBQbs5il1z"); 
+  })();
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="./main.js"></script>
 </body>
 
 </html>

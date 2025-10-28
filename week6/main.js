@@ -1,11 +1,14 @@
 // 翻译词典
-alert("✅ main.js 已成功运行");
 const i18n = {
   en: {
     surname: "Surname/Family name:",
     given: "Given name:",
+    XUEFENG:"XUEFENG",
+    LI:"LI",
     issuing: "Issuing Post Name:",
     entries: "Entries:",
+    LA:"LOS ANGELES",
+    BJ:"BEIJING",
     reel: "REEL",
     allProjects: "ALL PROJECT",
     focus: "Focus:",
@@ -13,42 +16,36 @@ const i18n = {
     focus_motion: "MOTION DESIGN",
     focus_uiux: "UI/UX DESIGN",
     newProjects: "NEW projects!",
-    project_walkinla: "WalkinLa",
     tag_uiux: "{uiux}",
-    project_futureFlowers: "FutureofFlowers",
-    project_intimateSpace: "IntimateSpace",
-    project_lastDecision: "TheLastDecision",
     tag_service: "{Service}",
+    tag_XR:"{XR}",
     feedback_label: "Customs Feedback:",
     feedback_placeholder: "Let me know your favorite project...",
-    send: "→",
-    footer: "Copyright © Xuefeng Li",
-    visual_id: "VISUALDESIGNER<<XUEFENG<<LI<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
   },
+
   zh: {
-    surname: "姓：",
-    given: "名：",
-    issuing: "签发地：",
-    entries: "入境记录：",
+    surname: "姓名：",
+    LI:"李雪丰",
+    given: "性别：",
+    XUEFENG:"女/F",
+    LA:"洛杉矶",
+    BJ:"北京",
+    issuing: "签发地点：",
+    entries: "类型：",
     reel: "作品集视频",
     allProjects: "全部项目",
-    focus: "研究方向：",
+    focus: "签发机关：",
     focus_graphic: "平面设计",
     focus_motion: "动态图形设计",
     focus_uiux: "交互 / 界面设计",
-    newProjects: "最新项目！",
-    project_walkinla: "WalkinLa",
+    newProjects: "入境记录",
     tag_uiux: "{界面/交互}",
-    project_futureFlowers: "FutureofFlowers",
-    project_intimateSpace: "IntimateSpace",
-    project_lastDecision: "最后的决定",
     tag_service: "{服务设计}",
-    feedback_label: "访客留言：",
-    feedback_placeholder: "你最喜欢哪个项目？告诉我！",
-    send: "→",
-    footer: "版权所有 © 李雪峰",
-    visual_id: "VISUALDESIGNER<<XUEFENG<<LI<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+    tag_XR:"{虚拟现实}",
+    feedback_label: "海关留言：",
+    feedback_placeholder: " 请确认该设计师是否通行！",    
   }
+
 };
 
 // 切换函数
@@ -78,4 +75,29 @@ $(".dropdown").on("change", function () {
 // 页面加载时先设置为英文
 switchLang("en");
 
-console.log("✅ main.js 已成功加载");
+$(function () {
+  $("#contact-form").on("submit", function (e) {
+    e.preventDefault(); // 防止表单默认刷新
+
+    const message = $("#message").val();
+
+    $("#send-btn").text("Sending... ✉️");
+
+    emailjs.send("service_fk8bkba", "template_jnd48mh", {
+      to_name: "Xuefeng Li",
+      message: message,
+    })
+    .then(function (response) {
+      console.log("Success:", response.status, response.text);
+      $("#send-btn").text("Message Sent");
+      $("#message").val("");
+    })
+    .catch(function (error) {
+      console.error("Failed:", error);
+      $("#send-btn").text("Error");
+    });
+  });
+});
+
+$("#contact-form").append('<p class="sent-msg"> Message sent successfully!</p>');
+setTimeout(() => $(".sent-msg").fadeOut(), 3000);
