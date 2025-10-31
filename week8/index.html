@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Xuefeng Li</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+  
+  <video autoplay muted loop playsinline id="bg-video">
+    <source src="web bg video.mp4" type="video/mp4">
+    update your browser for the beautiful bg video.
+  </video>
+
+  <input type="checkbox" id="menu-toggle">
+
+  <label for="menu-toggle" id="menu-btn">
+      <span class="line1"></span>
+      <span class="line2"></span>
+      <span class="line3"></span>
+  </label>
+
+  <div id="sidebar">
+      <ul>
+        <li><a href="playground.html" class="nav-link active">Playground</a></li>
+        <li><a href="projects.html">All Project</a></li>
+        <li><a href="#">REEL</a></li>
+      </ul>
+
+      <ul class="contact">
+        <li><a href="mailto:xuefli33@gmail.com">xuefli33@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/xuefli33" target="_blank">LinkedIn</a></li>
+      </ul>
+  </div>
+
+  <div class="passport">
+      <div class="info">
+        <p>
+          <span class = "label" data-i18n="surname">Surname/Family name:</span>
+          <strong class = "value" data-i18n="LI">LI</strong>
+        </p>
+        <p>
+          <span class="label" data-i18n="given">Given name: </span>
+          <strong class = "value" data-i18n="XUEFENG">XUEFENG</strong>
+        </p>
+        <p>
+          <span class="label" data-i18n="issuing">Issuing Post Name:</span>
+            <strong class="value"> 
+              <select class="dropdown">
+                <option value="la" selected data-i18n="LA" >LOS ANGELES</option>
+                <option value="bj" data-i18n="BJ">BEIJING</option>
+              </select>
+            </strong>
+        </p>
+        <p>
+          <span class="label" data-i18n="entries">Entries:</span>
+        <p>
+        <strong class="value">
+          <a href="reel.html" class="hover" data-i18n="reel">REEL</a> / 
+          <a href="projects.html" class="hover" data-i18n="allProjects">ALL PROJECT</a>
+        </strong>
+        </p>
+
+        <p>
+          <span class = "label" data-i18n="focus">Focus:</span>
+        </p>
+        <ul>
+            <li data-i18n="focus_graphic">GRAPHIC DESIGN</li>
+            <li data-i18n="focus_motion">MOTION DESIGN</li>
+            <li data-i18n="focus_uiux">UI/UX DESIGN</li>
+
+        </ul>
+      </div>
+
+    <div class="symbols">**</div>
+    
+    <div class="visual-id">VISUALDESIGNER&lt;&lt;XUEFENG&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</div>
+      <img src="image/profile.png" alt="Xuefeng Li" class="profile-pic">
+
+      <div class="secondpage" data-i18n="newProjects">
+        NEW projects!
+    </div>
+
+    <div class="newprojects-list">
+      <div class="newproject">
+        <span class="name"><u>WalkinLa</u></span>
+        <span class="tag" data-i18n="tag_uiux">{uiux}</span>
+        <span class="tools">Figma, Unity, C4D, Ae</span>
+        <span class="year">2024</span>
+      </div>
+
+      <div class="newproject">
+        <span class="name"><u>FutureofFlowers</u></span>
+        <span class="tag" data-i18n="tag_uiux">{uiux}</span>
+        <span class="tools">Figma, Illustrator</span>
+        <span class="year">2024</span>
+      </div>
+
+      <div class="newproject">
+        <span class="name"><u>IntimateSpace</u></span>
+        <span class="tag" data-i18n="tag_XR">{XR}</span>
+        <span class="tools">Figma, C4D, Ae</span>
+        <span class="year">2024</span>
+      </div>
+
+      <div class="newproject">
+        <span class="name"><u>TheLastDecision</u></span>
+        <span class="tag" data-i18n="tag_service">{Service}</span>
+        <span class="tools">TouchDesigner + Arduino</span>
+        <span class="year">2023</span>
+      
+      <a href="projects.html" class="view-more">...</a>
+
+      </div>
+
+    </div>
+      <div class="custom-message">
+      <form id="contact-form">
+      <label for="message" data-i18n="feedback_label" >Customs Feedback:</label>
+      <input type="text" id="message" name="message" data-i18n="feedback_placeholder" placeholder="Let me know your favorite project..." required>
+      <button type="submit" class="send-btn">→</button>
+      </form>
+    </div>
+  </div>
+
+
+
+    <footer class="site-footer">
+    <p>Copyright © Xuefeng Li</p>
+    </footer>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  (function() {
+    emailjs.init("l0lsVh4tBQbs5il1z"); 
+  })();
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="./main.js"></script>
+</body>
+
+</html>
+

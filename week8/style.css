@@ -1,0 +1,525 @@
+:root{
+  --bodyfont:"Roboto Mono", monospace;
+  --bodytext-color:#797979;
+  --importanttext-color:#242424;
+  --hover-color:#b766d7;
+  --hover-a-color:rgba(183, 102, 215, 0.4);
+
+}
+/* 隐藏 checkbox */
+#menu-toggle {
+  display: none;
+}
+
+/* 通用样式 */
+#menu-btn span {
+  display: block;
+  height: 3px;
+  width: 100%;                 /* 宽度固定 */
+  background: var(--importanttext-color); 
+  border-radius: 2px;
+  transition: all 0.2s ease-in-out;
+  transform-origin: right center; /* 从右向左缩放 */
+}
+
+/* 默认状态（不同缩放比例） */
+#menu-btn .line1 { transform: scaleX(1); }
+#menu-btn .line2 { transform: scaleX(0.8); }
+#menu-btn .line3 { transform: scaleX(0.6); }
+
+/* Hover 时变化 */
+#menu-btn:hover .line1 {
+  transform: scaleX(0.4);
+  background: #b766d7;
+  transition-delay: 0s;
+}
+#menu-btn:hover .line2 {
+  transform: scaleX(1);
+  background: #b766d7;
+  transition-delay: 0.05s;
+}
+#menu-btn:hover .line3 {
+  transform: scaleX(0.7);
+  background: #b766d7;
+  transition-delay: 0.1s;
+}
+
+/* 菜单按钮容器 */
+#menu-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 30px;
+  height: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+#sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 250px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  box-shadow: -2px 0 4px rgba(0,0,0,0.2);
+  transform: translateX(100%);      
+  transition: transform 0.3s ease-in-out; 
+  z-index: 1000;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+#sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-link {
+  display: inline-block;
+  font-family: 'Roboto Mono', monospace;
+  color: #000;
+  text-decoration: none;
+  position: relative;
+
+  transition: color 0.3s ease;
+}
+/* ✅ 当前页面：加横条 & 禁止点击 */
+.nav-link.active {
+  color: #000; /* 保持当前色 */
+  cursor: default; /* 不显示手型 */
+  pointer-events: none; /* 禁止点击 */
+}
+
+/* ✅ 横条（可改成左条或底线） */
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  width: 43%;
+  height: 2px;
+  background-color: #000000; 
+  border-radius: 2px;
+}
+#sidebar li {
+  margin: 16px 0;
+  padding: 0px;
+}
+
+#sidebar a {
+  display: block;
+  color: #000;
+  text-decoration: none;
+  font-family: "Roboto Mono", monospace;
+}
+
+#sidebar .menu a {
+  font-size: 18px;
+}
+
+#sidebar .contact {
+  margin-top: auto;  /* 自动把联系方式推到底 */
+  padding-bottom: 220px;
+}
+#sidebar .contact a {
+  font-size: 14px;
+  color: #333;
+}
+
+
+/* 鼠标移到按钮 OR 侧边栏自身时展开 */
+#menu-btn:hover ~ #sidebar,
+#sidebar:hover {
+  transform: translateX(0);
+}
+
+/* 如果点击了按钮（checkbox checked），强制隐藏 */
+#menu-toggle:checked ~ #sidebar {
+  transform: translateX(100%);
+}
+
+
+
+
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover; 
+  z-index: -1;      
+}
+body {
+  margin: 0;
+  padding: 40px 0 0 0;
+  font-family: "Roboto Mono", monospace;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.passport {
+  position: relative;
+  width: 625.5px;
+  height: 920.95px;
+  background: url("bg.png") no-repeat center/cover;
+  border-radius: 40px;
+  /* box-shadow: 0 8px 20px rgba(0,0,0,0.25);*/
+  overflow: hidden;
+
+}
+.label {
+  text-transform: uppercase;
+  color:var(--bodytext-color);
+  font-size:  12px;
+  letter-spacing: 1px;
+}
+.dropdown {
+  font-family: "Roboto Mono", monospace;
+  font-size: 14px;
+  color: var(--importanttext-color);
+  background: transparent;      /* 背景透明，和周围融合 */
+  border: none;                 /* 去掉默认边框 */
+  border-bottom: 1px solid #aaa; /* 下划线风格 */
+  padding: 2px 4px;
+  outline: none;
+  cursor: pointer;
+}
+
+.dropdown option {
+  background: #fff;             /* 下拉展开时的背景 */
+  color: #000;
+}
+.value{
+  color:var(--importanttext-color)
+}
+.hover {
+  position: relative;
+  display: inline-block;
+  color: var(--importanttext-color);
+  text-decoration: none;
+}
+
+.hover::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 100%;         
+  width: 0;
+  background-color: rgba(183, 102, 215, 0.4);
+  transition: width 0.3s ease;
+  z-index: 0;         
+}
+
+.hover:hover::after {
+  width: 100%;
+}
+
+
+/* "**" */
+.symbols {
+  position: absolute;
+  top: 450px;      
+  left: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #797979;
+  letter-spacing: 2px;
+}
+
+/* VISUALDESIGNER<<XUEFENG<<< */
+.visual-id {
+  position: absolute;
+  top: 470px;     
+  left: 30px;
+  font-size: 14px;
+  color: #797979;
+  letter-spacing: 2px;
+}
+/* basic info */
+.info {
+  position: absolute;
+  top: 150px;   /* 往下放 */
+  left: 340px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #666666;
+  width: 260px; /* 保证和右侧插画区隔开 */
+}
+.info p {
+  margin: 8px 0;        
+}
+
+.info strong {
+  font-weight: 400;
+}
+
+.info ul {
+  margin: 8px 0 8px;
+  padding: 0;
+  list-style: none;
+}
+.info li {
+  margin: 4px 0;
+}
+
+
+
+
+.profile-pic {
+  position: absolute;
+  top: 210px;
+  left: 60px;
+  height: 200px;
+  width: auto;
+}
+
+.secondpage {
+  font-size: 14px;
+  color: var(--bodytext-color);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 520px 30px 20px; /* 上下留空 */
+  position: relative;
+
+}
+.newprojects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* 行距 */
+  margin-bottom: 80px;
+  font-family: "Roboto Mono", monospace;
+}
+
+.newproject {
+  display: grid;
+  grid-template-columns: 150px 100px 1fr 60px; /* 左到右四列 */
+  align-items: center;       /* 垂直居中 */
+  gap: 10px;
+  margin-left: 30px;
+  font-size: 14px;
+  color:var(--bodytext-color)
+}
+.newproject .name{
+  color: var(--importanttext-color);
+}
+.view-more {
+  display: inline-block;
+  margin-top: 10px;
+  font-family: "Roboto Mono", monospace;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #777;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.view-more:hover {
+  color: var(--hover-color)          /* 鼠标移上变紫 */
+
+}
+
+.custom-message {
+  font-family: "Roboto Mono", monospace;
+  font-size: 14px;
+  margin-left: 30px;
+  color: var(--importanttext-color);
+  text-transform: uppercase;
+}
+
+.custom-message form {
+  position:relative;
+}
+.input-wrap {
+  position:relative;
+}
+
+.custom-message input {  
+  width: 95%;
+  border: none;
+  border-bottom: 1px solid #5f5f5f; 
+  background: transparent;
+  color: var(--bodytext-color);
+  font-style: italic;
+  font-family: "Roboto Mono", monospace;
+  font-size: 14px;
+  outline: none;  
+  padding: 5px 0; 
+  margin-right:20px;
+
+}
+
+.custom-message input::placeholder {
+  color: var(--bodytext-color);
+  font-style: italic; 
+}
+.send-btn {
+  position: absolute;
+  right: 20px;                /* 固定在右边 */
+  bottom: 10px; 
+  border: none;
+  background: transparent;
+  color: #a2a2a2;      
+  font-size: 18px;
+  cursor: not-allowed;
+  opacity: 0;
+  transform: translateY(2px); /* 稍微往下，等出现时更自然 */
+  transition: 
+    opacity 0.4s ease,
+    transform 0.4s ease,
+    color 0.3s ease;
+}
+/* 当输入框有内容时，箭头激活 */
+.custom-message input:valid + .send-btn {
+  opacity: 1; /* 👈 淡入出现 */
+  transform: translateY(0); /* 回到正常位置 */
+  color: #000000;
+  cursor: pointer;
+}
+
+/* hover 时增加发射感 */
+.custom-message input:valid + .send-btn:hover {
+  color:--hover-color     
+  transform: translateX(3px); /* 向右轻微移动 */
+}
+
+.site-footer {
+
+  text-align: center;        
+  padding: 20px 0;           
+  font-family: 'Roboto Mono', monospace;
+  font-size: 14px;
+  color: #000000; 
+  width: 100%;
+  margin-top: 20px; 
+  margin-bottom:20px;
+}
+        
+html[lang="zh-CN"] * {
+  font-family: "Noto Sans Mono CJK", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", monospace !important;
+  letter-spacing: 0.5px;
+  font-weight: 400;
+}
+/* Projectpage */
+.category-header {
+  position: fixed;       
+  top: 20px;
+  left: 0px;
+  width: 100%;
+
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  gap: 40px;
+  padding-left: 30px;
+  padding-right: 30px;
+  max-width: 1600px;
+  margin-left: auto; 
+  margin-right: auto;
+  z-index: 999;       
+  box-sizing: border-box;                  
+}
+
+.tab {
+  font-family: 'Roboto Mono', monospace;
+  font-size: clamp(18px, 1.5vw, 22px);
+  cursor: pointer;
+  color: #000000;
+  position: relative;
+  transition: color 0.3s ease;
+  text-align: right;
+  
+}
+
+/* hover 效果 */
+.tab:hover {
+  color: var(--hover-color);
+}
+
+
+/* 激活状态：上方粉色条 */
+.tab::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--hover-a-color);
+  opacity: 0;              /* 初始透明 */
+  transform: scale(0.95);  /* 稍微缩小一点，增加动画感 */
+  transition: 
+    opacity 0.4s ease,
+    transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* 平滑动画 */
+   z-index: -1;
+   
+}
+.tab.active::after {
+  opacity: 1;        /* 淡入 */
+  transform: scale(1); /* 轻微放大 */
+}
+
+.tab.active {
+  color:var(--bodytext-color);
+}
+
+
+
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1.4fr);
+  gap: 10px;
+  row-gap: 50px;  /* 控制每一行之间的视频垂直距离 */
+  column-gap: 40px;
+  margin-top: 60px;
+  margin-bottom: 80px;
+  padding-left: 30px;
+  padding-right: 30px;
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+@media (max-width: 1024px) {
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+}
+.Project_cover {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.Project_cover video {
+  
+  width: 100%; /* 完全填满列宽 */
+  height: auto; /* 自动保持比例 */
+  aspect-ratio: 16 / 9; /* 保持 16:9 比例 */
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  object-fit: cover; /* 保持视觉裁切一致 */
+}
+.Project_cover:hover video {
+  transform: scale(1.05);
+}
+
+.Project_cover.hidden {
+  display: none;
+}
+
+
+
+
+

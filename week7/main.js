@@ -101,3 +101,52 @@ $(function () {
 
 $("#contact-form").append('<p class="sent-msg"> Message sent successfully!</p>');
 setTimeout(() => $(".sent-msg").fadeOut(), 3000);
+
+//play video in Project page
+// 自动播放可见的视频（可选，如果希望视频自动播放）
+$("video").each(function() {
+  this.play().catch(() => {});
+});
+
+
+//导航页面选中
+
+$(function() {
+  $(".tab").on("click", function() {
+    const clickedCategory = $(this).data("category");
+
+    // 如果点击的是 "all"
+    if (clickedCategory === "all") {
+      $(".tab").removeClass("active");         // 清除其他分类
+      $(this).addClass("active");              // 只选中 all
+      $(".Project_cover").fadeIn(300);         // 显示所有视频
+      return;
+    }
+
+    // 点击其他分类时
+    $(this).toggleClass("active");              // 切换当前分类
+    $(".tab[data-category='all']").removeClass("active"); // 取消 all 的选中
+
+    // 获取所有选中的分类
+    const activeCategories = $(".tab.active").map(function() {
+      return $(this).data("category");
+    }).get();
+
+    // 没有选中任何分类 → 回到 all 状态
+    if (activeCategories.length === 0) {
+      $(".tab[data-category='all']").addClass("active");
+      $(".Project_cover").fadeIn(300);
+      return;
+    }
+
+    // 根据选中的分类显示视频
+    $(".Project_cover").each(function() {
+      const videoCategory = $(this).data("category");
+      if (activeCategories.includes(videoCategory)) {
+        $(this).fadeIn(300);
+      } else {
+        $(this).fadeOut(200);
+      }
+    });
+  });
+});
