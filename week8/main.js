@@ -13,7 +13,7 @@ const i18n = {
     allProjects: "ALL PROJECT",
     focus: "Focus:",
     focus_graphic: "GRAPHIC DESIGN",
-    focus_motion: "MOTION DESIGN",
+    focus_motion: "MOTION GRAPHIC DESIGN",
     focus_uiux: "UI/UX DESIGN",
     newProjects: "NEW projects!",
     tag_uiux: "{uiux}",
@@ -150,3 +150,23 @@ $(function() {
     });
   });
 });
+
+// 读取 URL 参数
+const params = new URLSearchParams(window.location.search);
+const defaultCategory = params.get("category");
+
+if (defaultCategory) {
+  // 如果网址有分类参数，先清除 all
+  $(".tab").removeClass("active");
+  $(`.tab[data-category="${defaultCategory}"]`).addClass("active");
+
+  // 触发和点击一样的过滤行为
+  $(".Project_cover").each(function() {
+    const videoCategory = $(this).data("category");
+    if (videoCategory === defaultCategory) {
+      $(this).show();
+    } else {
+      $(this).hide();
+    }
+  });
+}

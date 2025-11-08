@@ -1,33 +1,42 @@
 :root{
   --bodyfont:"Roboto Mono", monospace;
-  --bodytext-color:#797979;
+  --bodytext-color:#7b7b7b;
   --importanttext-color:#242424;
   --hover-color:#b766d7;
   --hover-a-color:rgba(183, 102, 215, 0.4);
-
+  --font-size-body: clamp(14px, 1.6vw, 18px);
+  --font-size-small:clamp(12px,1.4vw,14px);
 }
-/* 隐藏 checkbox */
+
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;   
+}
+/* hide sidebar */
 #menu-toggle {
   display: none;
 }
-
-/* 通用样式 */
+/* open sidebar */
 #menu-btn span {
-  display: block;
+  display: block;  /* show sidebar */
   height: 3px;
-  width: 100%;                 /* 宽度固定 */
+  width: 100%;               
   background: var(--importanttext-color); 
   border-radius: 2px;
   transition: all 0.2s ease-in-out;
-  transform-origin: right center; /* 从右向左缩放 */
+  transform-origin: right center;
 }
 
-/* 默认状态（不同缩放比例） */
+/* logo animation */
 #menu-btn .line1 { transform: scaleX(1); }
 #menu-btn .line2 { transform: scaleX(0.8); }
 #menu-btn .line3 { transform: scaleX(0.6); }
 
-/* Hover 时变化 */
 #menu-btn:hover .line1 {
   transform: scaleX(0.4);
   background: #b766d7;
@@ -44,7 +53,6 @@
   transition-delay: 0.1s;
 }
 
-/* 菜单按钮容器 */
 #menu-btn {
   position: fixed;
   top: 20px;
@@ -57,7 +65,7 @@
   cursor: pointer;
   z-index: 1001;
 }
-
+/* sidebar */
 #sidebar {
   position: fixed;
   top: 0;
@@ -81,82 +89,63 @@
   margin: 0;
   padding: 0;
 }
-.nav-link {
-  display: inline-block;
-  font-family: 'Roboto Mono', monospace;
-  color: #000;
-  text-decoration: none;
-  position: relative;
-
-  transition: color 0.3s ease;
-}
-/* ✅ 当前页面：加横条 & 禁止点击 */
-.nav-link.active {
-  color: #000; /* 保持当前色 */
-  cursor: default; /* 不显示手型 */
-  pointer-events: none; /* 禁止点击 */
-}
-
-/* ✅ 横条（可改成左条或底线） */
-.nav-link.active::after {
-  content: "";
-  position: absolute;
-  bottom: 8px;
-  left: 0;
-  width: 43%;
-  height: 2px;
-  background-color: #000000; 
-  border-radius: 2px;
-}
 #sidebar li {
   margin: 16px 0;
   padding: 0px;
 }
-
 #sidebar a {
   display: block;
-  color: #000;
+  color: var(--importanttext-color);
   text-decoration: none;
   font-family: "Roboto Mono", monospace;
 }
-
 #sidebar .menu a {
-  font-size: 18px;
+  font-size: var(--font-size-body);
 }
-
 #sidebar .contact {
-  margin-top: auto;  /* 自动把联系方式推到底 */
+  margin-top: auto; 
   padding-bottom: 220px;
 }
 #sidebar .contact a {
-  font-size: 14px;
-  color: #333;
+  font-size: var(--font-size-body);
+  color: var(--importanttext-color);
 }
 
 
-/* 鼠标移到按钮 OR 侧边栏自身时展开 */
+.clickline {
+  display: inline-block;
+  font-family: 'Roboto Mono', monospace;
+  color: var(--importanttext-color);
+  text-decoration: none;
+  position: relative;
+
+}
+.clickline.active {
+  color: #000; 
+  cursor: default; 
+  pointer-events: none; 
+}
+
+.clickline.active::after {
+  content: "";
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  width: 39%;
+  height: 2px;
+  background-color: #000000; 
+  border-radius: 2px;
+}
+
 #menu-btn:hover ~ #sidebar,
 #sidebar:hover {
   transform: translateX(0);
 }
-
-/* 如果点击了按钮（checkbox checked），强制隐藏 */
 #menu-toggle:checked ~ #sidebar {
   transform: translateX(100%);
 }
 
-
-
-
-#bg-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  min-height: 100%;
-  object-fit: cover; 
-  z-index: -1;      
-}
+/* Body */
 body {
   margin: 0;
   padding: 40px 0 0 0;
@@ -167,30 +156,64 @@ body {
   align-items: center;
   min-height: 100vh;
 }
-
+/* content in passport */
 .passport {
   position: relative;
   width: 625.5px;
   height: 920.95px;
-  background: url("bg.png") no-repeat center/cover;
+  background: url("bg.png") no-repeat center/contain;
   border-radius: 40px;
-  /* box-shadow: 0 8px 20px rgba(0,0,0,0.25);*/
-  overflow: hidden;
+  /* box-shadow: 0 8px 20px rgba(0,0,0,0.25); */
+}
 
-}
 .label {
-  text-transform: uppercase;
   color:var(--bodytext-color);
-  font-size:  12px;
-  letter-spacing: 1px;
+  font-size:  var(--font-size-small);
+  /* letter-spacing: 1px; */
 }
+/* basic info */
+.info {
+  position: absolute;
+  top: 150px;   /* 往下放 */
+  left: 340px;
+  font-size: var(--font-size-small);
+  line-height: 1.4;
+  color: var(--bodytext-color);
+  width: 260px; /* 保证和右侧插画区隔开 */
+}
+
+.info p {
+  margin: 8px 0;        
+}
+.info p.group {
+  margin: 10px 0 4px; /* 上大 下小 → 形成视觉块 */
+}
+.info strong {
+  font-weight: 400;
+}
+.group p {
+  margin-bottom: 0;
+}
+.group ul {
+  margin-top: 4px; 
+  padding: 0;
+  top:0;
+  list-style: none;
+  color:var(--importanttext-color);
+}
+.info li {
+  margin: 4px 0;
+}
+.value {
+  color:var(--importanttext-color);
+}
+
 .dropdown {
   font-family: "Roboto Mono", monospace;
-  font-size: 14px;
   color: var(--importanttext-color);
-  background: transparent;      /* 背景透明，和周围融合 */
-  border: none;                 /* 去掉默认边框 */
-  border-bottom: 1px solid #aaa; /* 下划线风格 */
+  background: transparent;   
+  border: none; 
+  /* border-bottom: 1px solid #aaa; 下划线风格 */
   padding: 2px 4px;
   outline: none;
   cursor: pointer;
@@ -200,16 +223,17 @@ body {
   background: #fff;             /* 下拉展开时的背景 */
   color: #000;
 }
-.value{
-  color:var(--importanttext-color)
+.dropdown option:hover {
+  background: var(--hover-a-color);
 }
+
+
 .hover {
   position: relative;
   display: inline-block;
   color: var(--importanttext-color);
   text-decoration: none;
 }
-
 .hover::after {
   content: "";
   position: absolute;
@@ -221,7 +245,6 @@ body {
   transition: width 0.3s ease;
   z-index: 0;         
 }
-
 .hover:hover::after {
   width: 100%;
 }
@@ -230,70 +253,39 @@ body {
 /* "**" */
 .symbols {
   position: absolute;
-  top: 450px;      
-  left: 30px;
-  font-size: 14px;
+  top: 400px;  
+  left: 25px; 
+  font-size: var(--font-size-small);
   font-weight: 600;
-  color: #797979;
+  color: var(--bodytext-color);
   letter-spacing: 2px;
 }
-
-/* VISUALDESIGNER<<XUEFENG<<< */
 .visual-id {
   position: absolute;
-  top: 470px;     
-  left: 30px;
-  font-size: 14px;
-  color: #797979;
+  top: 420px;     
+  left: 25px;
+  font-size: var(--font-size-small);
+  color: var(--bodytext-color);
   letter-spacing: 2px;
 }
-/* basic info */
-.info {
-  position: absolute;
-  top: 150px;   /* 往下放 */
-  left: 340px;
-  font-size: 14px;
-  line-height: 1.4;
-  color: #666666;
-  width: 260px; /* 保证和右侧插画区隔开 */
-}
-.info p {
-  margin: 8px 0;        
-}
-
-.info strong {
-  font-weight: 400;
-}
-
-.info ul {
-  margin: 8px 0 8px;
-  padding: 0;
-  list-style: none;
-}
-.info li {
-  margin: 4px 0;
-}
-
-
-
-
 .profile-pic {
   position: absolute;
-  top: 210px;
+  top: 180px;
   left: 60px;
   height: 200px;
   width: auto;
+  z-index: 5; /* 添加图层控制 */
 }
-
+/* secondpage */
 .secondpage {
-  font-size: 14px;
+  position: relative;
+  font-size: var(--font-size-small);
   color: var(--bodytext-color);
   text-transform: uppercase;
+  margin: 520px 25px 25px; /* 上下留空 */
   letter-spacing: 2px;
-  margin: 520px 30px 20px; /* 上下留空 */
-  position: relative;
-
 }
+
 .newprojects-list {
   display: flex;
   flex-direction: column;
@@ -304,16 +296,39 @@ body {
 
 .newproject {
   display: grid;
-  grid-template-columns: 150px 100px 1fr 60px; /* 左到右四列 */
-  align-items: center;       /* 垂直居中 */
+  grid-template-columns: 150px 100px 1fr 60px; 
+  align-items: center;     
   gap: 10px;
-  margin-left: 30px;
-  font-size: 14px;
-  color:var(--bodytext-color)
+  margin-left: 25px;
+  font-size: var(--font-size-small);
+  color:var(--bodytext-color);
 }
 .newproject .name{
   color: var(--importanttext-color);
+  text-transform: uppercase;
 }
+.newproject:hover {
+  position: relative;
+  display: inline-block;
+  color: var(--importanttext-color);
+  text-decoration: none;
+}
+.newproject::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 100%;         
+  width: 0;
+  background-color: rgba(183, 102, 215, 0.4);
+  transition: width 0.3s ease;
+  z-index: 0;         
+}
+.newproject:hover::after {
+  width: 100%;
+}
+
+
 .view-more {
   display: inline-block;
   margin-top: 10px;
@@ -395,12 +410,10 @@ body {
 }
 
 .site-footer {
-
   text-align: center;        
   padding: 20px 0;           
   font-family: 'Roboto Mono', monospace;
   font-size: 14px;
-  color: #000000; 
   width: 100%;
   margin-top: 20px; 
   margin-bottom:20px;
@@ -411,6 +424,32 @@ html[lang="zh-CN"] * {
   letter-spacing: 0.5px;
   font-weight: 400;
 }
+
+@media (max-width: 900px) {
+  .passport {
+    width: 92vw;
+    height: auto;
+    aspect-ratio: 625.5 / 920.95;
+    background-size: contain;
+    background-position: center top;
+    position: relative;
+  }
+  .profile-pic {
+    position: fixed;       /* ✅ 独立于护照之外，避免 overflow hidden */
+    top: 22vh;             /* 根据屏幕高度定位 */
+    left: 50vw;            /* 居中 */
+    transform: translateX(-50%);
+    width: 90vw;           /* ✅ 变大不会再被裁切 */
+    height: auto;
+    z-index: 999;          /* ✅ 浮在所有内容之上 */
+    pointer-events: none;  /* ✅ 让背景可点，不挡 UI */
+  }
+}
+
+
+
+
+
 /* Projectpage */
 .category-header {
   position: fixed;       
@@ -493,6 +532,7 @@ html[lang="zh-CN"] * {
   box-sizing: border-box;
 }
 @media (max-width: 1024px) {
+
   .gallery {
     grid-template-columns: 1fr;
   }
