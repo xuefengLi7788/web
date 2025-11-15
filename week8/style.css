@@ -167,6 +167,30 @@
   background-color: #000000; 
   border-radius: 2px;
 }
+.nav-link {
+  display: inline-block;
+  font-family: 'Roboto Mono', monospace;
+  color: var(--importanttext-color);
+  text-decoration: none;
+  position: relative;
+
+}
+.nav-link.active {
+  color: #000; 
+  cursor: default; 
+  pointer-events: none; 
+}
+
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  width: 42%;
+  height: 2px;
+  background-color: #000000; 
+  border-radius: 2px;
+}
 
 #menu-btn:hover ~ #sidebar,
 #sidebar:hover {
@@ -175,30 +199,8 @@
 #menu-toggle:checked ~ #sidebar {
   transform: translateX(100%);
 }
-<<<<<<< Updated upstream
 
 /* Body */
-=======
-@media (max-width: 480px) {
-  #sidebar {
-    width: 12.5rem;
-    padding: 3rem 1rem;
-  }
-}
-
-
-
-#bg-video {
-  position: absolute !important;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-  pointer-events: none;     
-}
->>>>>>> Stashed changes
 body {
   margin: 0;
   padding: 40px 0 0 0;
@@ -219,11 +221,6 @@ body {
   /* box-shadow: 0 8px 20px rgba(0,0,0,0.25); */
 }
 
-<<<<<<< Updated upstream
-=======
-}
-
->>>>>>> Stashed changes
 .label {
   color:var(--bodytext-color);
   font-size:  var(--font-size-small);
@@ -360,17 +357,15 @@ body {
   margin-left: 25px;
   font-size: var(--font-size-small);
   color:var(--bodytext-color);
+  position: relative;     
+  cursor: pointer;       
+  overflow: hidden;
 }
 .newproject .name{
   color: var(--importanttext-color);
   text-transform: uppercase;
 }
-.newproject:hover {
-  position: relative;
-  display: inline-block;
-  color: var(--importanttext-color);
-  text-decoration: none;
-}
+
 .newproject::after {
   content: "";
   position: absolute;
@@ -383,36 +378,29 @@ body {
   z-index: 0;         
 }
 .newproject:hover::after {
-  width: 100%;
+  width: 95%;
 }
-
-
-.view-more {
-  display: inline-block;
-  margin-top: 10px;
-  font-family: "Roboto Mono", monospace;
-  font-size: 14px;
-  letter-spacing: 1px;
-  color: #777;
+.newproject * {
+  position: relative;
+  z-index: 1;
+}
+.newproject:hover {
+  color: var(--importanttext-color);
   text-decoration: none;
-  transition: all 0.3s ease;
 }
 
-.view-more:hover {
-  color: var(--hover-color)          /* 鼠标移上变紫 */
-
-}
 
 .custom-message {
   font-family: "Roboto Mono", monospace;
-  font-size: 14px;
-  margin-left: 30px;
+  font-size: var(--font-size-small);
+  margin-left: 25px;
   color: var(--importanttext-color);
   text-transform: uppercase;
 }
 
 .custom-message form {
   position:relative;
+  margin-top: 20px;
 }
 .input-wrap {
   position:relative;
@@ -422,11 +410,12 @@ body {
   width: 95%;
   border: none;
   border-bottom: 1px solid #5f5f5f; 
+  margin-top: 20px;
   background: transparent;
-  color: var(--bodytext-color);
+  color: var(--importanttext-color);
   font-style: italic;
   font-family: "Roboto Mono", monospace;
-  font-size: 14px;
+  font-size: var(--font-size-small);
   outline: none;  
   padding: 5px 0; 
   margin-right:20px;
@@ -443,9 +432,8 @@ body {
   bottom: 10px; 
   border: none;
   background: transparent;
-  color: #a2a2a2;      
-  font-size: 18px;
-  cursor: not-allowed;
+  color: var(--hover-color);      
+  font-size: var(--font-size-small);
   opacity: 0;
   transform: translateY(2px); /* 稍微往下，等出现时更自然 */
   transition: 
@@ -453,17 +441,18 @@ body {
     transform 0.4s ease,
     color 0.3s ease;
 }
+
 /* 当输入框有内容时，箭头激活 */
 .custom-message input:valid + .send-btn {
-  opacity: 1; /* 👈 淡入出现 */
-  transform: translateY(0); /* 回到正常位置 */
-  color: #000000;
+  opacity: 1; 
+  transform: translateY(0); 
+  color: var(--hover-color);
   cursor: pointer;
 }
 
 /* hover 时增加发射感 */
 .custom-message input:valid + .send-btn:hover {
-  color:--hover-color     
+  color:var(--importanttext-color);    
   transform: translateX(3px); /* 向右轻微移动 */
 }
 
@@ -483,26 +472,8 @@ html[lang="zh-CN"] * {
   font-weight: 400;
 }
 
-@media (max-width: 900px) {
-  .passport {
-    width: 92vw;
-    height: auto;
-    aspect-ratio: 625.5 / 920.95;
-    background-size: contain;
-    background-position: center top;
-    position: relative;
-  }
-  .profile-pic {
-    position: fixed;       /* ✅ 独立于护照之外，避免 overflow hidden */
-    top: 22vh;             /* 根据屏幕高度定位 */
-    left: 50vw;            /* 居中 */
-    transform: translateX(-50%);
-    width: 90vw;           /* ✅ 变大不会再被裁切 */
-    height: auto;
-    z-index: 999;          /* ✅ 浮在所有内容之上 */
-    pointer-events: none;  /* ✅ 让背景可点，不挡 UI */
-  }
-}
+
+
 
 
 

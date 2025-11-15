@@ -109,6 +109,7 @@ $("video").each(function() {
 });
 
 
+
 //导航页面选中
 
 $(function() {
@@ -151,22 +152,14 @@ $(function() {
   });
 });
 
-// 读取 URL 参数
 const params = new URLSearchParams(window.location.search);
 const defaultCategory = params.get("category");
 
-if (defaultCategory) {
-  // 如果网址有分类参数，先清除 all
-  $(".tab").removeClass("active");
-  $(`.tab[data-category="${defaultCategory}"]`).addClass("active");
-
-  // 触发和点击一样的过滤行为
-  $(".Project_cover").each(function() {
-    const videoCategory = $(this).data("category");
-    if (videoCategory === defaultCategory) {
-      $(this).show();
-    } else {
-      $(this).hide();
+$(function () {
+  if (defaultCategory) {
+    const targetTab = $(`.tab[data-category="${defaultCategory}"]`);
+    if (targetTab.length) {
+      targetTab.trigger("click");  // ✅ 自动触发 click，自然套用筛选逻辑
     }
-  });
-}
+  }
+});
