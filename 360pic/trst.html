@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Pannellum Demo</title>
+
+    <!-- 引入 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
+
+    <!-- 引入 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+</head>
+
+<body style="margin: 0; height: 100vh;">
+
+    <!-- 容器 -->
+    <div id="panorama" style="width: 100%; height: 100%;"></div>
+
+    <script>
+        pannellum.viewer('panorama', {
+            "type": "equirectangular",
+            "panorama": "test.png",
+            "autoLoad": true,
+            "autoRotate": -2
+        });
+    </script>
+
+</body>
+</html>

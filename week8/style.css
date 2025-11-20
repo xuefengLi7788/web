@@ -4,7 +4,6 @@
   --importanttext-color:#242424;
   --hover-color:#b766d7;
   --hover-a-color:rgba(183, 102, 215, 0.4);
-<<<<<<< Updated upstream
   --font-size-body: clamp(14px, 1.6vw, 18px);
   --font-size-small:clamp(12px,1.4vw,14px);
 }
@@ -19,7 +18,6 @@
   z-index: -1;   
 }
 /* hide sidebar */
-=======
 
   font-size: 16px; /* Desktop 默认 16px */
 }
@@ -33,7 +31,6 @@
 }
 
 /* 隐藏 checkbox */
->>>>>>> Stashed changes
 #menu-toggle {
   display: none;
 }
@@ -81,9 +78,7 @@
   cursor: pointer;
   z-index: 1001;
 }
-<<<<<<< Updated upstream
 /* sidebar */
-=======
 @media (max-width: 480px) {
   #menu-btn {
     width: 2.5rem;
@@ -96,7 +91,6 @@
   }
 }
 
->>>>>>> Stashed changes
 #sidebar {
   position: fixed;
   top: 0;
