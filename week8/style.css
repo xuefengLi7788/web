@@ -19,8 +19,6 @@
 }
 /* hide sidebar */
 
-  font-size: 16px; /* Desktop 默认 16px */
-}
 
 @media (max-width: 768px) {
   :root { font-size: 14px; } /* Tablet 缩小 */
@@ -383,7 +381,7 @@ body {
   text-decoration: none;
 }
 
-
+/* 
 .custom-message {
   font-family: "Roboto Mono", monospace;
   font-size: var(--font-size-small);
@@ -422,21 +420,21 @@ body {
 }
 .send-btn {
   position: absolute;
-  right: 20px;                /* 固定在右边 */
+  right: 20px;                
   bottom: 10px; 
   border: none;
   background: transparent;
   color: var(--hover-color);      
   font-size: var(--font-size-small);
   opacity: 0;
-  transform: translateY(2px); /* 稍微往下，等出现时更自然 */
+  transform: translateY(2px); 
   transition: 
     opacity 0.4s ease,
     transform 0.4s ease,
     color 0.3s ease;
 }
 
-/* 当输入框有内容时，箭头激活 */
+
 .custom-message input:valid + .send-btn {
   opacity: 1; 
   transform: translateY(0); 
@@ -444,10 +442,147 @@ body {
   cursor: pointer;
 }
 
-/* hover 时增加发射感 */
+
 .custom-message input:valid + .send-btn:hover {
   color:var(--importanttext-color);    
-  transform: translateX(3px); /* 向右轻微移动 */
+  transform: translateX(3px); 
+} 
+*/
+
+
+.feedback-btn {
+  font-family: var(--bodyfont);
+  font-size: var(--font-size-small);
+  color: var(--importanttext-color);
+  background: transparent;
+  border: 1px solid var(--hover-color);
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-left: 25px;
+  margin-top: 40px;
+}
+.feedback-btn:hover {
+  background: var(--hover-color);
+  color: white;
+}
+.popup-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  
+  backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+  z-index: 5000;
+}
+
+/* ========== POPUP BOX ========== */
+.popup-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* 水平居中 */
+  justify-content: center;  /* 垂直居中（内容会自动往中间排） */
+
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 30px;
+  width: 330px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  font-family: var(--bodyfont);
+  position: relative;
+    animation: popupFadeScale 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@keyframes popupFadeScaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 关闭动画 (反向 Apple style) */
+@keyframes popupFadeScaleOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+/* 默认，没有动画 */
+.popup-box {
+  opacity: 0; 
+  transform: scale(0.95);
+}
+.popup-inner {
+  width: 100%;
+  padding: 0 12px 20px;   
+  box-sizing: border-box;
+}
+
+.popup-inner input,
+.popup-inner textarea,
+.popup-inner button {
+  width: 100%;
+  box-sizing: border-box;
+}
+.popup-title {
+  margin-bottom: 10px;
+  color: var(--importanttext-color);
+  font-size: 18px;
+}
+
+/* Close button */
+.popup-close {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  font-size: 28px;
+  color: var(--importanttext-color);
+  cursor: pointer;
+  transition: 0.2s;
+}
+.popup-close:hover {
+  color: var(--hover-color);
+}
+
+/* Form fields */
+#contact-form input,
+#contact-form textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--bodytext-color);
+  background: transparent;
+  font-family: var(--bodyfont);
+  margin-top: 6px;
+  margin-bottom: 10px;
+}
+
+.popup-submit {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: var(--hover-color);
+  color: white;
+  font-family: var(--bodyfont);
+  font-size: var(--font-size-small);
+  cursor: pointer;
+  transition: 0.3s;
+}
+.popup-submit:hover {
+  background: var(--importanttext-color);
 }
 
 .site-footer {

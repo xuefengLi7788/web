@@ -113,13 +113,33 @@
       </div>
     </div>
    
-        <div class="custom-message">
+      <button id="feedbackBtn" class="feedback-btn">CUSTOMS FEEDBACK</button>
+
+      <!-- form update -->
+      <div id="feedbackPopup" class="popup-overlay">
+        <div class="popup-box">
+          <span id="popupClose" class="popup-close">&times;</span>
+
+          <h2 class="popup-title">CUSTOMS FEEDBACK</h2>
+
+          <!-- === EmailJS 发送的表单 === -->
+          <div class="popup-inner"> 
           <form id="contact-form">
-          <label for="message" data-i18n="feedback_label" >Customs Feedback:</label>
-          <input type="text" id="message" name="message" data-i18n="feedback_placeholder" placeholder="Let me know your favorite project..." required>
-          <button type="submit" class="send-btn">SEND</button>
+            <label>Name</label>
+            <input type="text" id="user-name" name="user-name" placeholder="Your name..." required>
+
+            <label>Email</label>
+            <input type="email" id="user-email" name="user-email" placeholder="Your email..." required>
+
+            <label>Comment</label>
+            <textarea id="message" name="message" placeholder="Let me know your favorite project..." required></textarea>
+
+            <button type="submit" id="send-btn" class="popup-submit">SEND</button>
           </form>
+          </div>
+
         </div>
+      </div>
  </div>
 
 
